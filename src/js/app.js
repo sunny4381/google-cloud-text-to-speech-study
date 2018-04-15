@@ -9,23 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     request.voice = { languageCode: 'ja-jp', ssmlGender: 'FEMALE' };
     request.audioConfig = { audioEncoding: 'MP3' };
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://texttospeech.googleapis.com/v1beta1/text:synthesize");
-    xhr.setRequestHeader("Authorization", `Bearer ${token}`);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(request));
-
-    return new Promise((fulfilled, rejected) => {
-      xhr.onload = () => {
-        if (xhr.status === 200) {
-          fulfilled(xhr);
-        } else {
-          rejected(new Error(xhr));
-        }
-      };
-      xhr.onerror = () => {
-        rejected(new Error(xhr));
-      };
+    return fetch("https://texttospeech.googleapis.com/v1beta1/text:synthesize", {
+      method: 'POST',
+      headers: new Headers({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(request)
     });
   };
 
@@ -48,8 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const text = document.querySelector("textarea[name=text]");
       btn.onclick = (ev) => {
         synthesis(token, text.value)
-          .then((xhr) => {
-            const base64Audio = JSON.parse(xhr.responseText).audioContent;
+          .then((response) => { return response.json(); })
+          .then((response) => {
+            const base64Audio = response.audioContent;
             const binaryAudio = Uint8Array.from(atob(base64Audio), c => c.charCodeAt(0));
             return context.decodeAudioData(binaryAudio.buffer);
           })
