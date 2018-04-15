@@ -4938,6 +4938,10 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
+text-to-speech@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/text-to-speech/-/text-to-speech-1.0.8.tgz#6914b23fc5bb61755ec2c134d1157398f2b07ab2"
+
 textextensions@2:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/textextensions/-/textextensions-2.2.0.tgz#38ac676151285b658654581987a0ce1a4490d286"
