@@ -1,0 +1,7 @@
+{
+  "name": "google-cloud-text-to-speech-study",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "NAKANO Hideo <pinarello.marvel@gmail.com>",
+  "license": "MIT"
+}
