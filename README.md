@@ -18,6 +18,8 @@ And then create `public/credential.json` like this:
 }
 ```
 
+If you have installed gcloud tools, you can get your access token via: `gcloud auth application-default print-access-token`.
+
 And then run following command to start development web server.
 
 ```
@@ -25,3 +27,7 @@ $ npm run start
 ```
 
 And then open <http://localhost:8080/> in your browser.
+
+## See Also
+
+[Google Cloud Text-to-Speech API Documentation](https://cloud.google.com/text-to-speech/docs/)
